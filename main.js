@@ -1,10 +1,26 @@
-var num = 266219;
-function persistence(num) {
-  var result = num.toString().split('').reduce(function(total, v) {
-    return total * v;
-  }, 1);
-  console.log(result);
+'use strict';
+var lang = 'en';
+if (lang == 'ru') {
+  console.log(['Пн','Вт','Сp','Чт','Пт','Сб','Вс']);
+} else if (lang == 'en') {
+  console.log(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
 }
 
-persistence(266219);
-    
+switch (lang) {
+  case 'ru':
+    console.log(['Пн','Вт','Сp','Чт','Пт','Сб','Вс']);
+    break;
+  case 'en':
+    console.log(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
+    break;
+}
+
+var langArray = [];
+langArray['ru'] = ['Пн','Вт','Сp','Чт','Пт','Сб','Вс'];
+langArray['en'] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+console.log(langArray[lang]);
+
+const namePerson = prompt('Введите Имя');
+
+namePerson === 'Артем' ? console.log("директор") : namePerson === 'Александр' ? console.log("преподователь") : console.log("студент");
+
