@@ -1,26 +1,18 @@
 'use strict';
-var lang = 'en';
-if (lang == 'ru') {
-  console.log(['Пн','Вт','Сp','Чт','Пт','Сб','Вс']);
-} else if (lang == 'en') {
-  console.log(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
+
+let arr = ["66161", "4868486", "895652", "2546884", "965151", "363984", "265489"];
+arr.forEach((item) => {
+  if (item.startsWith('2') || item.startsWith('4')) {
+    console.log(item);
+  }
+});
+
+let n = 100; 
+ 
+for (let i = 2; i <= n; i++) { 
+    let isPrime = true;
+    for (let j = 2; j < i; j++) { 
+        if (i % j === 0) { isPrime = false; break; } 
+    }
+    if (isPrime) console.log(i + " делители этого числа 1 и " + i); 
 }
-
-switch (lang) {
-  case 'ru':
-    console.log(['Пн','Вт','Сp','Чт','Пт','Сб','Вс']);
-    break;
-  case 'en':
-    console.log(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
-    break;
-}
-
-var langArray = [];
-langArray['ru'] = ['Пн','Вт','Сp','Чт','Пт','Сб','Вс'];
-langArray['en'] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-console.log(langArray[lang]);
-
-const namePerson = prompt('Введите Имя');
-
-namePerson === 'Артем' ? console.log("директор") : namePerson === 'Александр' ? console.log("преподователь") : console.log("студент");
-
