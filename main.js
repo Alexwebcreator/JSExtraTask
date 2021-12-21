@@ -1,18 +1,70 @@
 'use strict';
 
-let arr = ["66161", "4868486", "895652", "2546884", "965151", "363984", "265489"];
-arr.forEach((item) => {
-  if (item.startsWith('2') || item.startsWith('4')) {
-    console.log(item);
-  }
-});
-
-let n = 100; 
- 
-for (let i = 2; i <= n; i++) { 
-    let isPrime = true;
-    for (let j = 2; j < i; j++) { 
-        if (i % j === 0) { isPrime = false; break; } 
+const DomElement = function (selector, height, width, bg, fontSize, text) {
+  this.selector = selector;
+  this.height = height;
+  this.width = width;
+  this.bg = bg;
+  this.fontSize = fontSize;
+  this.text = text;
+  this.render = function () {
+    let elem;
+    let elementName = prompt("Назови элемент, начни ввод с . или # ");
+    let dot = elementName[0] == "." ? elementName.substr(1) : elementName;
+    let sharp = elementName[0] == "#" ? elementName.substr(1) : elementName;
+    switch (true) {
+      case elementName[0] == ".":
+        const div = document.createElement("div");
+        div.classList.add(dot);
+        elem = div;
+        break;
+      case elementName[0] == "#":
+        const p = document.createElement("p");
+        p.id = sharp;
+        elem = p;
+        break;
+      default:
+        console.log("Ошибка");
     }
-    if (isPrime) console.log(i + " делители этого числа 1 и " + i); 
-}
+    function isNumber(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+    do {
+      this.height = prompt("Высота элемента");
+    } while (!isNumber(this.height));
+    do {
+      this.width = prompt("Ширина элемента");
+    } while (!isNumber(this.width));
+    let elemBg = prompt("Цвет фона на английском или #Hex color)");
+    do {
+      this.fontSize = prompt("Размер текста");
+    } while (!isNumber(this.fontSize));
+    let elemText = prompt("Внутренний текст элемента");
+    
+    if (elem) {
+      elem.style.cssText =
+        "height:" +
+        this.height +
+        "px; " +
+        "width:" +
+        this.width +
+        "px; " +
+        "background:" +
+        elemBg +
+        ";" +
+        "font-size:" +
+        this.fontSize + "px; ";
+      elem.textContent = elemText;
+      document.body.append(elem);
+    } else {
+      alert("Начните ввод с (.) или (#)");
+    }
+  };
+
+
+
+};
+
+
+const obj = new DomElement();
+obj.render();
